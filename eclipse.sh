@@ -6,7 +6,7 @@ function start_eclipse(){
 docker ps -a | grep eclipse || {
       docker pull sonnt/eclipse
       docker run\
-      --network=host\
+      --network ${BRIDGE_NAME}\
       --name eclipse\
       -heclipse\
       --restart always \
