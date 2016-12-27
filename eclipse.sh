@@ -13,7 +13,7 @@ docker ps -a | grep eclipse || {
       -v /home/sonnt/workspace:/home/sonnt/workspace \
       -v /tmp/.X11-unix:/tmp/.X11-unix\
       -e DISPLAY=:0\
-      -tid sonnt/eclipse /bin/bash
+      -tid sonnt/eclipse nohup /opt/eclipse/eclipse  &>/dev/null&
     }
 }
 start_eclipse
