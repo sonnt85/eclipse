@@ -10,9 +10,9 @@ docker ps -a | grep eclipse || {
       --name eclipse\
       -heclipse\
       --restart always \
-      -v /home/Data/database/ssl:/home/sonnt/workspace
-      -v /tmp/.X11-unix:/tmp/.X11-unix
-      -e DISPLAY=:0
+      -v /home/Data/database/ssl:/home/sonnt/workspace \
+      -v /tmp/.X11-unix:/tmp/.X11-unix\
+      -e DISPLAY=:0\
       -tid sonnt/eclipse
     }
 }
