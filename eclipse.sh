@@ -15,6 +15,7 @@ docker ps -a | grep eclipse || {
       -v /tmp/.X11-unix:/tmp/.X11-unix\
       --privileged -v /dev:/dev \
       -e DISPLAY=:0\
+      --ipc host \
       -tid sonnt/eclipse nohup /opt/eclipse/eclipse  &>/dev/null&
     }
 }
