@@ -12,6 +12,7 @@ docker ps -a | grep eclipse || {
       --restart always \
       -v /home/sonnt/workspace:/home/sonnt/workspace \
       -v /tmp/.X11-unix:/tmp/.X11-unix\
+      --privileged -v /dev/bus/usb:/dev/bus/usb \
       -e DISPLAY=:0\
       -tid sonnt/eclipse nohup /opt/eclipse/eclipse  &>/dev/null&
     }
