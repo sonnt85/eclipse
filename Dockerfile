@@ -107,6 +107,7 @@ RUN mkdir -p /home/sonnt/workspace && \
     sudo -usonnt ssh-keygen -f /home/sonnt/.ssh/id_rsa -t rsa -N ''
 #for arduino use serial
 RUN usermod  -aG dialout sonnt
+RUN apt-get install usbutils;
 RUN rm -rf /var/lib/apt/lists/*
 
 USER sonnt
