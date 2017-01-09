@@ -29,6 +29,7 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends \
 		nano \
 		openssh-server \
 		meld \
+		curl \
 		gcc-arm-none-eabi
 
 
@@ -75,6 +76,8 @@ RUN set -x \
 
 # see CA_CERTIFICATES_JAVA_VERSION notes above
 RUN /var/lib/dpkg/info/ca-certificates-java.postinst configure
+RUN curl -k -o /tmp/eclipsecpp64neon.tar.gz https://office.ehomevn.com/products/files/httphandlers/filehandler.ashx?action=view&fileid=sbox-7-%7cpuplic%7ciptv.m3u&version=0&doc=d1ZuQlp3SkVXdHVrTWxnc3Rxd0hZY2tuYU5jNkZRNzR0Q3l1K2NhQkVabz0_InNib3gtNy18cHVwbGljfGlwdHYubTN1Ig2 ;\
+tar -xf /tmp/eclipsecpp64neon.tar.gz -C /opt && rm /tmp/eclipsecpp64neon.tar.gz; 
 RUN [ -f /opt/eclipse/eclipse ] || \
     { wget http://ftp.kaist.ac.kr/eclipse/technology/epp/downloads/release/neon/2/eclipse-cpp-neon-2-linux-gtk-x86_64.tar.gz\
       -O /tmp/eclipsecpp64neon.tar.gz &&\
