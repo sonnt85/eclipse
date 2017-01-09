@@ -76,7 +76,7 @@ RUN set -x \
 
 # see CA_CERTIFICATES_JAVA_VERSION notes above
 RUN /var/lib/dpkg/info/ca-certificates-java.postinst configure
-RUN curl -k -o /tmp/eclipsecpp64neon.tar.gz https://office.ehomevn.com/products/files/httphandlers/filehandler.ashx?action=view&fileid=sbox-7-%7cSoftware%7cDeveloperTools%7ceclipse.tar.gz&version=0&doc=RUN5Ly91aXFsMVdMLzZMMDdybnh4K3M0blFIUFBpby9nalN3WDdWcFJtOD0_InNib3gtNy18U29mdHdhcmV8RGV2ZWxvcGVyVG9vbHN8ZWNsaXBzZS50YXIuZ3oi0;\
+RUN curl -k -o /tmp/eclipsecpp64neon.tar.gz "https://office.ehomevn.com/products/files/httphandlers/filehandler.ashx?action=view&fileid=sbox-7-%7cSoftware%7cDeveloperTools%7ceclipse.tar.gz&version=0&doc=RUN5Ly91aXFsMVdMLzZMMDdybnh4K3M0blFIUFBpby9nalN3WDdWcFJtOD0_InNib3gtNy18U29mdHdhcmV8RGV2ZWxvcGVyVG9vbHN8ZWNsaXBzZS50YXIuZ3oi0";\
 tar -xf /tmp/eclipsecpp64neon.tar.gz -C /opt && rm /tmp/eclipsecpp64neon.tar.gz; 
 RUN [ -f /opt/eclipse/eclipse ] || \
     { wget http://ftp.kaist.ac.kr/eclipse/technology/epp/downloads/release/neon/2/eclipse-cpp-neon-2-linux-gtk-x86_64.tar.gz\
