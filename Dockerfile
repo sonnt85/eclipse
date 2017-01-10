@@ -75,8 +75,11 @@ RUN set -x \
 
 # see CA_CERTIFICATES_JAVA_VERSION notes above
 RUN /var/lib/dpkg/info/ca-certificates-java.postinst configure
-RUN curl -k -o /tmp/eclipsecpp64neon.tar.gz "https://office.ehomevn.com/products/files/httphandlers/filehandler.ashx?action=view&fileid=sbox-7-%7cSoftware%7cDeveloperTools%7ceclipse.tar.gz&version=0&doc=RUN5Ly91aXFsMVdMLzZMMDdybnh4K3M0blFIUFBpby9nalN3WDdWcFJtOD0_InNib3gtNy18U29mdHdhcmV8RGV2ZWxvcGVyVG9vbHN8ZWNsaXBzZS50YXIuZ3oi0";\
-tar -xf /tmp/eclipsecpp64neon.tar.gz -C /opt && rm /tmp/eclipsecpp64neon.tar.gz; 
+RUN [ -f /opt/eclipse/eclipse ] || 
+    {
+      curl -k -o /tmp/eclipsecpp64neon.tar.gz "https://office.ehomevn.com/products/files/httphandlers/filehandler.ashx?action=view&fileid=sbox-7-%7cSoftware%7cDeveloperTools%7ceclipse.tar.gz&version=0&doc=RUN5Ly91aXFsMVdMLzZMMDdybnh4K3M0blFIUFBpby9nalN3WDdWcFJtOD0_InNib3gtNy18U29mdHdhcmV8RGV2ZWxvcGVyVG9vbHN8ZWNsaXBzZS50YXIuZ3oi0";\
+      tar -xf /tmp/eclipsecpp64neon.tar.gz -C /opt && rm /tmp/eclipsecpp64neon.tar.gz; x=1;
+    }
 RUN [ -f /opt/eclipse/eclipse ] || \
     { wget http://ftp.kaist.ac.kr/eclipse/technology/epp/downloads/release/neon/2/eclipse-cpp-neon-2-linux-gtk-x86_64.tar.gz\
       -O /tmp/eclipsecpp64neon.tar.gz &&\
@@ -97,16 +100,16 @@ VOLUME ["/tmp/.X11-unix"]
 
 #create user with sudo perm
 #RUN adduser --disabled-password --gecos sonnt sonnt
-RUN mkdir -p /home/sonnt/workspace && \
-    mkdir -p /home/sonnt/.ssh && \
-    cp /etc/skel/.bashrc /home/sonnt/.bashrc &&\
+RUN mkdir -p /home/sonnt/workspace &&  mkdir -p /home/sonnt/.ssh
+ADD config/.ssh /home/sonnt/.ssh/
+RUN cp /etc/skel/.bashrc /home/sonnt/.bashrc &&\
     cp /etc/skel/.profile /home/sonnt/.profile &&\
     echo "sonnt:x:1000:1000:sonnt,,,:/home/sonnt:/bin/bash" >> /etc/passwd && \
     echo "sonnt:x:1000:" >> /etc/group && \
     echo "sonnt ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/sonnt && \
     chmod 0440 /etc/sudoers.d/sonnt && \
-    chown sonnt:sonnt -R /home/sonnt && \
-    sudo -usonnt ssh-keygen -f /home/sonnt/.ssh/id_rsa -t rsa -N ''
+    chown sonnt:sonnt -R /home/sonnt
+#    sudo -usonnt ssh-keygen -f /home/sonnt/.ssh/id_rsa -t rsa -N ''
 #for arduino use serial
 RUN usermod  -aG dialout sonnt
 RUN apt-get install -y usbutils;
