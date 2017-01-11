@@ -92,7 +92,7 @@ RUN sed -ire "9i-vm" /opt/eclipse/eclipse.ini;\
     chmod +x /opt/eclipse/eclipse;
 ENV GA_VERSION  5_4-2016q3-20160926
 #4_9-2015q3-20150921 
-RUN wget https://launchpadlibrarian.net/287101520/gcc-arm-none-eabi-$GA_VERSION-linux.tar.bz2 -O /tmp/gcc-arm-none-eabi-$GA_VERSION-linux.tar.bz2 &>/dev/null \
+RUN wget -q https://launchpadlibrarian.net/287101520/gcc-arm-none-eabi-$GA_VERSION-linux.tar.bz2 -O /tmp/gcc-arm-none-eabi-$GA_VERSION-linux.tar.bz2 \
     && tar xjf /tmp/gcc-arm-none-eabi-$GA_VERSION-linux.tar.bz2 -C /usr/local && \
     rm /tmp/gcc-arm-none-eabi-$GA_VERSION-linux.tar.bz2
 #share X11 from host
