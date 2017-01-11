@@ -1,0 +1,9 @@
+#Equinox secure storage version 1.0
+#Wed Jan 11 14:52:27 ICT 2017
+org.eclipse.equinox.security.preferences.version=1
+org.eclipse.equinox.security.preferences.cipher=PBEWithMD5AndDES
+/org.eclipse.userstorage/https%3A%2F%2Fapi.eclipse.org%2F/termsOfUseAgreed=\t,dHJ1ZQ\=\=
+/org.eclipse.equinox.secure.storage/verification/org.eclipse.equinox.security.ui.defaultpasswordprovider=org.eclipse.equinox.security.ui.defaultpasswordprovider\tfCQlTVf4YIQ\=,If1k+WJLR867VqLcOxQ6ftSyJovwqH5t
+/org.eclipse.userstorage/https%3A%2F%2Fapi.eclipse.org%2F/username=\t,dGhhbmhzb24ucmZAZ21haWwuY29t
+org.eclipse.equinox.security.preferences.keyFactory=PBEWithMD5AndDES
+/org.eclipse.userstorage/https%3A%2F%2Fapi.eclipse.org%2F/password=org.eclipse.equinox.security.ui.defaultpasswordprovider\t6k31DKBe6TQ\=,acz58AfrxRpzlsIzoaJn4Q\=\=
