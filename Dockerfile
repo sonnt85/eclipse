@@ -106,8 +106,8 @@ ADD config/.eclipse /home/sonnt/.eclipse/
 ADD config/.gitconfig /home/sonnt/.gitconfig
 RUN cp /etc/skel/.bashrc /home/sonnt/.bashrc && \
     cp /etc/skel/.profile /home/sonnt/.profile && \
-    RUN echo "export NO_AT_BRIDGE=1" >> /home/sonnt/.profile && \
-    RUN echo "export NO_AT_BRIDGE=1" >> /home/sonnt/.bashrc && \
+    echo "export NO_AT_BRIDGE=1" >> /home/sonnt/.profile && \
+    echo "export NO_AT_BRIDGE=1" >> /home/sonnt/.bashrc && \
     echo "sonnt:x:1000:1000:sonnt,,,:/home/sonnt:/bin/bash" >> /etc/passwd && \
     echo "sonnt:x:1000:" >> /etc/group && \
     echo "sonnt ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/sonnt && \
