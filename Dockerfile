@@ -77,8 +77,8 @@ RUN set -x \
 RUN /var/lib/dpkg/info/ca-certificates-java.postinst configure
 RUN [ -f /opt/eclipse/eclipse ] || \
     { \
-      curl -k -o /tmp/eclipsecpp64neon.tar.gz "https://office.ehomevn.com/products/files/httphandlers/filehandler.ashx?action=view&fileid=sbox-10-%7csonnt%7cSoftware%7cDeveloperTools%7ceclipse.tar.gz&version=0&doc=dy9iU1c1OCtPV29ObE9oQmRNcEdiT3pNKys1MVhOZnZONUxuTFhyQkl2ND0_InNib3gtMTAtfHNvbm50fFNvZnR3YXJlfERldmVsb3BlclRvb2xzfGVjbGlwc2UudGFyLmd6Ig2" &>/dev/null;\
-      tar -xf /tmp/eclipsecpp64neon.tar.gz -C /opt; rm /tmp/eclipsecpp64neon.tar.gz; x=1;\
+      curl -sS -k -o /tmp/eclipsecpp64neon.tar.gz "https://office.ehomevn.com/products/files/httphandlers/filehandler.ashx?action=view&fileid=sbox-10-%7csonnt%7cSoftware%7cDeveloperTools%7ceclipse.tar.gz&version=0&doc=dy9iU1c1OCtPV29ObE9oQmRNcEdiT3pNKys1MVhOZnZONUxuTFhyQkl2ND0_InNib3gtMTAtfHNvbm50fFNvZnR3YXJlfERldmVsb3BlclRvb2xzfGVjbGlwc2UudGFyLmd6Ig2" >/dev/null;\
+      tar -xf /tmp/eclipsecpp64neon.tar.gz -C /opt; rm /tmp/eclipsecpp64neon.tar.gz;\
     }
 RUN [ -f /opt/eclipse/eclipse ] || \
     { wget http://ftp.kaist.ac.kr/eclipse/technology/epp/downloads/release/neon/2/eclipse-cpp-neon-2-linux-gtk-x86_64.tar.gz\
