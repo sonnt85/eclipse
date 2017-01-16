@@ -116,7 +116,7 @@ RUN cp /etc/skel/.bashrc /home/sonnt/.bashrc && \
 #    sudo -usonnt ssh-keygen -f /home/sonnt/.ssh/id_rsa -t rsa -N ''
 #for arduino use serial
 RUN usermod  -aG dialout sonnt
-RUN apt-get install -y usbutils;
+RUN apt-get install -y usbutils ctags;
 RUN rm -rf /var/lib/apt/lists/*
 
 USER sonnt
