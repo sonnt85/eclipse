@@ -23,6 +23,7 @@ RUN apt-get install -y --no-install-recommends \
         openssh-server \
         meld \
         curl \
+        wget \
         usbutils \
         ctags \
         erlang \
@@ -33,7 +34,7 @@ RUN apt-get install -y --no-install-recommends \
 # Default to UTF-8 file.encoding
 ENV LANG C.UTF-8
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
-RUN echo "export NO_AT_BRIDGE=1" >> /etc/profile;
+ENV NO_AT_BRIDGE 1
 #    /usr/sbin/update-java-alternatives -s java-1.8.0-openjdk-amd64;
 
 RUN echo  "GatewayPorts yes \n\
@@ -80,8 +81,6 @@ ADD config/.eclipse /home/sonnt/.eclipse/
 ADD config/.gitconfig /home/sonnt/.gitconfig
 RUN cp /etc/skel/.bashrc /home/sonnt/.bashrc && \
     cp /etc/skel/.profile /home/sonnt/.profile && \
-    echo "export NO_AT_BRIDGE=1" >> /home/sonnt/.profile && \
-    echo "export NO_AT_BRIDGE=1" >> /home/sonnt/.bashrc && \
     echo "sonnt:x:1000:1000:sonnt,,,:/home/sonnt:/bin/bash" >> /etc/passwd && \
     echo "sonnt:x:1000:" >> /etc/group && \
     echo "sonnt ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/sonnt && \
