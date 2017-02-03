@@ -59,7 +59,7 @@ RUN [ -f /opt/eclipse/eclipse ] || \
       tar -xf /tmp/eclipsecpp64neon.tar.gz -C /opt && \
       chmod 555 opt/eclipse/eclipse && \
       rm /tmp/eclipsecpp64neon.tar.gz; \
-      echo "export ECLIPSE_ORG=1" >> /etc/profile;
+      echo "export ECLIPSE_ORG=1" >> /etc/profile; \
     }
 RUN sed -ire "9i-vm" /opt/eclipse/eclipse.ini;\
     sed -ire "10i${JAVA_HOME}/jre/bin/java" /opt/eclipse/eclipse.ini;\
