@@ -1,18 +1,18 @@
-FROM buildpack-deps:jessie-scm
+FROM debian:jessie
 
 #FROM sonnt/eclipse
 #MAINTAINER sonnt
 
-RUN echo "deb http://http.debian.net/debian jessie-backports main" >> /etc/apt/sources.list
+RUN echo "deb http://ftp.debian.org/debian/ jessie-backports  main" >> /etc/apt/sources.list
 
-RUN apt-get -y update && apt-get install -y --no-install-recommends \
+RUN apt-get -y update && apt-get -t jessie-backports install -y ca-certificates-java openjdk-8-jre-headless openjdk-8-jdk
+RUN apt-get install -y --no-install-recommends \
         apt-utils \
         lib32z1 lib32ncurses5 \
         bzip2 \
         unzip \
         xz-utils \
         sudo \
-        arduino \
         git \
         build-essential \
         libc6-dbg \
@@ -23,20 +23,18 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends \
         openssh-server \
         meld \
         curl \
-        openjdk-8-jre-headless \
-        openjdk-8-jdk \
         usbutils \
         ctags \
         erlang \
         erlang-doc \
         gcc-arm-none-eabi
-
+#        arduino
 
 # Default to UTF-8 file.encoding
 ENV LANG C.UTF-8
-RUN echo "export NO_AT_BRIDGE=1" >> /etc/profile;\
-    echo "JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> /etc/profile;\
-    /usr/sbin/update-java-alternatives -s java-1.8.0-openjdk-amd64;
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+RUN echo "export NO_AT_BRIDGE=1" >> /etc/profile;
+#    /usr/sbin/update-java-alternatives -s java-1.8.0-openjdk-amd64;
 
 RUN echo  "GatewayPorts yes \n\
 X11Forwarding yes\n\
@@ -46,7 +44,6 @@ PrintLastLog yes\n\
 PermitRootLogin yes\n\
 TCPKeepAlive yes" >> /etc/ssh/sshd_config;
 
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 #default DISPLAY
 ENV DISPLAY :0
