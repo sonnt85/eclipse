@@ -52,7 +52,7 @@ RUN { \
 		echo 'set -e'; \
 		echo; \
 		echo 'dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"'; \
-	} > /usr/local/bin/docker-java-home \
+    } > /usr/local/bin/docker-java-home \
 	&& chmod +x /usr/local/bin/docker-java-home
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
@@ -116,7 +116,7 @@ RUN cp /etc/skel/.bashrc /home/sonnt/.bashrc && \
 #    sudo -usonnt ssh-keygen -f /home/sonnt/.ssh/id_rsa -t rsa -N ''
 #for arduino use serial
 RUN usermod  -aG dialout sonnt
-RUN apt-get install -y usbutils ctags;
+RUN apt-get install -y usbutils ctags erlang erlang-doc;
 RUN rm -rf /var/lib/apt/lists/*
 
 USER sonnt
