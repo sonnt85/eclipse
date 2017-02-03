@@ -1,0 +1,5 @@
+[user]
+	name = sonnt
+	email = thanhson.rf@gmail.com
+[http]
+	sslVerify = false
